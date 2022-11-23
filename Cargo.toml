@@ -1,0 +1,30 @@
+[workspace]
+resolver = "2"
+members = []
+
+[package]
+name = "bevy_global_input"
+version = "0.1.0"
+authors = ["laundmo <laurinschmidt2001@gmail.com>"]
+readme = "README.md"
+description = """
+Global mouse + keyboard input for bevy - doesn't require a focused window.
+"""
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/laundmo/bevy_global_input"
+documentation = "https://docs.rs/bevy_global_input"
+keywords = ["bevy", "input", "mouse", "keyboard"]
+categories = []
+edition = "2021"
+
+[features]
+default = []
+
+[dependencies]
+bevy = { version = "0.9", default-features = false, features = [] }
+mouce = "0.2.41"
+mki = "0.2.3"
+crossbeam-channel = "0.5"
+
+[dev-dependencies]
+bevy = { version = "0.9", features = [] }
