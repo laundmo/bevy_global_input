@@ -12,7 +12,7 @@ fn main() {
 fn setup(mut hotkeys: ResMut<GlobalHotkeys>) {
     // adds a CTRL+Shit+Space global hotkey
     hotkeys.add(
-        "PrintSomething".to_string(),
+        "PrintSomething",
         &[
             GlobalKeys::LeftControl,
             GlobalKeys::LeftShift,
