@@ -4,7 +4,7 @@ members = []
 
 [package]
 name = "bevy_global_input"
-version = "0.2.0"
+version = "0.2.1"
 authors = ["laundmo <laurinschmidt2001@gmail.com>"]
 readme = "README.md"
 description = """
@@ -28,7 +28,3 @@ crossbeam-channel = "0.5"
 
 [dev-dependencies]
 bevy = { version = "0.9", features = [] }
-
-[package.metadata.docs.rs]
-all-features = true
-cargo-args = ["-Zunstable-options", "-Zrustdoc-scrape-examples=examples"]
