@@ -21,11 +21,10 @@ edition = "2021"
 default = []
 
 [dependencies]
-bevy = { git = "https://github.com/bevyengine/bevy", branch = "main", default-features = false, features = [
-] }
+bevy = { version = "0.10", default-features = false, features = [] }
 mouce = "0.2.41"
 mki = "0.2.3"
 crossbeam-channel = "0.5"
 
 [dev-dependencies]
-bevy = { git = "https://github.com/bevyengine/bevy", branch = "main" }
+bevy = { version = "0.10" }
