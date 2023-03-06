@@ -4,7 +4,7 @@ members = []
 
 [package]
 name = "bevy_global_input"
-version = "0.2.1"
+version = "0.3.0"
 authors = ["laundmo <laurinschmidt2001@gmail.com>"]
 readme = "README.md"
 description = """

@@ -48,5 +48,6 @@ Find more in [Examples](https://github.com/laundmo/bevy_global_input/tree/main/e
 
 | bevy | bevy_global_input |
 | ---- | ----------------- |
+| 0.10 | 0.3.0             |
 | 0.9  | 0.2.0             |
 | 0.9  | 0.1.0             |
