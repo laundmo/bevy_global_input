@@ -4,7 +4,7 @@ members = []
 
 [package]
 name = "bevy_global_input"
-version = "0.3.0"
+version = "0.4.0"
 authors = ["laundmo <laurinschmidt2001@gmail.com>"]
 readme = "README.md"
 description = """
@@ -21,10 +21,10 @@ edition = "2021"
 default = []
 
 [dependencies]
-bevy = { version = "0.10", default-features = false, features = [] }
-mouce = "0.2.41"
+bevy = { version = "0.11", default-features = false, features = [] }
+mouce = "0.2.43"
 mki = "0.2.3"
 crossbeam-channel = "0.5"
 
 [dev-dependencies]
-bevy = { version = "0.10" }
+bevy = { version = "0.11" }

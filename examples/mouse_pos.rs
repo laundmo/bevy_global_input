@@ -7,7 +7,10 @@ fn main() {
     App::new()
         .add_plugins(MinimalPlugins)
         .add_plugins(GlobalInputPlugins)
-        .add_system(mouse_pos.run_if(on_timer(Duration::from_secs_f32(0.5))))
+        .add_systems(
+            Update,
+            mouse_pos.run_if(on_timer(Duration::from_secs_f32(0.5))),
+        )
         .run();
 }
 

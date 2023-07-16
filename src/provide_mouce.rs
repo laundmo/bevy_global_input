@@ -11,15 +11,15 @@ pub type GlobalMouseButton = mouce::common::MouseButton;
 pub type GlobalScrollDirection = mouce::common::ScrollDirection;
 
 /// Contains all mouse events. Using more concrete events like [`GlobalMouseButtonEvents`] and [`GlobalScrollEvents`] is recommended.
-#[derive(Debug, Deref)]
+#[derive(Debug, Deref, Event)]
 pub struct GlobalMouseEvents(mouce::common::MouseEvent);
 
 /// Scroll wheel events. One event per scroll step, only contains the up/down information.
-#[derive(Debug, Deref)]
+#[derive(Debug, Deref, Event)]
 pub struct GlobalScrollEvents(GlobalScrollDirection);
 
 /// Mouse button press events.
-#[derive(Debug, Deref)]
+#[derive(Debug, Deref, Event)]
 pub struct GlobalMouseButtonEvents(GlobalMouseButton);
 
 impl Plugin for MousePosProvider {
@@ -29,12 +29,12 @@ impl Plugin for MousePosProvider {
             .add_event::<GlobalMouseEvents>()
             .add_event::<GlobalScrollEvents>()
             .add_event::<GlobalMouseButtonEvents>()
-            .add_startup_system(setup_hook)
-            .add_startup_system(setup_mover)
-            .add_system(store_last_pos.after(read_stream))
-            .add_system(split_events.after(read_stream))
-            .add_system(mover_events)
-            .add_system(read_stream);
+            .add_systems(Startup, setup_hook)
+            .add_systems(Startup, setup_mover)
+            .add_systems(Update, store_last_pos.after(read_stream))
+            .add_systems(Update, split_events.after(read_stream))
+            .add_systems(Update, mover_events)
+            .add_systems(Update, read_stream);
     }
 }
 
@@ -124,7 +124,7 @@ fn store_last_pos(mut events: EventReader<GlobalMouseEvents>, mut mouse: ResMut<
 
 /// Event which allows control over the mouse.
 ///
-/// ```
+/// ```ignore
 /// fn system(
 ///     mut moves: EventWriter<MouseControl>,
 /// ) {
@@ -133,7 +133,7 @@ fn store_last_pos(mut events: EventReader<GlobalMouseEvents>, mut mouse: ResMut<
 /// }
 /// ```
 
-#[derive(Copy, Clone, Debug)]
+#[derive(Copy, Clone, Debug, Event)]
 pub enum MouseControl {
     /// Moves the cursor to a absolute position (x, y), in the same coordinate system as [`GlobalMousePos`]
     MoveTo(usize, usize),

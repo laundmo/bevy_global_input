@@ -7,9 +7,9 @@ fn main() {
     App::new()
         .add_plugins(MinimalPlugins)
         .add_plugins(GlobalInputPlugins)
-        .add_system(key_events)
-        .add_system(mouse_button_events)
-        .add_system(scroll_events)
+        .add_systems(Update, key_events)
+        .add_systems(Update, mouse_button_events)
+        .add_systems(Update, scroll_events)
         .run();
 }
 

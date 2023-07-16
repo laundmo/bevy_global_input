@@ -22,19 +22,20 @@ Global Mouse and Keyboard events for bevy.
 log out global mouse position every half second.
 
 ```rust
-use bevy::{prelude::*, time::FixedTimestep};
+use std::time::Duration;
+
+use bevy::{prelude::*, time::common_conditions::on_timer};
 use bevy_global_input::{GlobalInputPlugins, GlobalMousePos};
 
 fn main() {
     App::new()
         .add_plugins(MinimalPlugins)
         .add_plugins(GlobalInputPlugins)
-        .add_system_set(
-            SystemSet::new()
-                .with_run_criteria(FixedTimestep::step(1.0 / 2.0))
-                .with_system(mouse_pos),
-        )
-        .run();
+        .add_systems(
+            Update,
+            mouse_pos.run_if(on_timer(Duration::from_secs_f32(0.5))),
+        );
+        // .run();
 }
 
 fn mouse_pos(pos: Res<GlobalMousePos>) {
@@ -48,6 +49,7 @@ Find more in [Examples](https://github.com/laundmo/bevy_global_input/tree/main/e
 
 | bevy | bevy_global_input |
 | ---- | ----------------- |
+| 0.11 | 0.4.0             |
 | 0.10 | 0.3.0             |
 | 0.9  | 0.2.0             |
 | 0.9  | 0.1.0             |

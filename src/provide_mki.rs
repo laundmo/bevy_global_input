@@ -9,13 +9,13 @@ use mki::Action;
 pub type GlobalKeys = mki::Keyboard;
 
 /// Event for hotkeys. The event will contain the String key which was provided during [`GlobalHotkeys::add()`]
-#[derive(Debug, Deref)]
+#[derive(Debug, Deref, Event)]
 pub struct GlobalHotkeyEvents(pub String);
 
 /// Event containing all keystrokes happening globally.
 ///
 /// Make sure these aren't recorded, as the user might enter passwords or other secrets.
-#[derive(Debug, Deref)]
+#[derive(Debug, Deref, Event)]
 pub struct GlobalKeyEvents(pub GlobalKeys);
 
 #[derive(Resource, Deref)]
@@ -28,9 +28,9 @@ impl Plugin for KeyboardProvider {
         app.add_event::<GlobalKeyEvents>()
             .init_resource::<GlobalHotkeys>()
             .add_event::<GlobalHotkeyEvents>()
-            .add_startup_system(send_events)
-            .add_system(read_stream_events)
-            .add_system(read_stream_hotkeys);
+            .add_systems(Startup, send_events)
+            .add_systems(Update, read_stream_events)
+            .add_systems(Update, read_stream_hotkeys);
     }
 }
 

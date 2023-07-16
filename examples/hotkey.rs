@@ -4,8 +4,8 @@ fn main() {
     App::new()
         .add_plugins(MinimalPlugins)
         .add_plugins(GlobalInputPlugins)
-        .add_startup_system(setup)
-        .add_system(system)
+        .add_systems(Startup, setup)
+        .add_systems(Update, system)
         .run();
 }
 

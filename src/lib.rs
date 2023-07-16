@@ -11,7 +11,7 @@ pub mod provide_mouce;
 
 pub use provide_mki::{GlobalHotkeyEvents, GlobalHotkeys, GlobalKeyEvents, GlobalKeys};
 pub use provide_mouce::{
-    GlobalMouseButtonEvents, GlobalMouseEvents, GlobalMousePos, GlobalScrollEvents, MouseControl
+    GlobalMouseButtonEvents, GlobalMouseEvents, GlobalMousePos, GlobalScrollEvents, MouseControl,
 };
 
 /// PluginGroup for the mouse and keyboard plugins
